@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 주석  ↑반응형 웹페이지에 꼭 필요한 내용 -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <title>나의 첫 Spring Boot 웹페이지</title>
+</head>
+<body>
+	<!-- 헤더 -->
+	<header>
+		<h1>보물찾기 게임</h1>
+		<p>숨겨진 보물을 찾아보세요</p>
+
+	</header>
+
+	<!-- 메인 -->
+	<main>
+		<section>
+			<label for="playerName">플레이어 이름</label>
+			<input id="playerName" type="text" placeholder="이름을 입력하세요">
+			<button onclick="showName()" >확인</button>
+			<script src="/js/game.js"></script>
+
+			<h2 class = "game-card">게임 안내</h2>
+			<p id = score>버튼을 눌러 게임을 시작하세요</p>
+			<button>확인</button>
+
+		</section>
+	</main>
+	<!-- 푸터 -->
+	<footer>
+		<article class="game-card">
+			<h2>클릭 점수 게임</h2>
+			<p>버튼을 눌러 점수를 모아 보세요.</p>
+			<button>게임 시작</button>
+		</article>
+		<p>나의 첫 웹게임 </p>
+	
+	</footer>
+</body>
+</html>
