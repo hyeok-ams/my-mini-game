@@ -26,3 +26,13 @@ h1 {
 li:hover {
 	background: #dbeafe;
 }
+
+/*html/testhtml/index.html css*/
+.highLight{
+	background-color: green;
+	color: pink;
+}
+#emp{
+	color:red;
+	font-size:30px;
+}

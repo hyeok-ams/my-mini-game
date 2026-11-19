@@ -124,6 +124,7 @@ const fortunes = [
 // 2. 선택된 포춘을 저장하는 포춘 변수를 초기화
 let currentFortune = "";
 // 3. 실제 포춘을 뽑는 함수 정의 drawFortune()
+let cnt = 0;
 function drawFortune(){
 	// 1. 포춘 배열에서 난수로 인덱스 번호를 가져오면 된다.
 	// 2. 난수 만들기 -> 임의의 정수 생성
@@ -135,28 +136,104 @@ function drawFortune(){
 	// Math.random(); 0.0 <= 난수 < 1.0 작은 실수 
 	const index = Math.floor(
 		Math.random() * fortunes.length
+		//0.1
 	); //배열.length : 배열의 크기
-	
 	//현재 랜덤 행운 뽑기
 	currentFortune = fortunes[index];
 	// 현재 운세의 내용을 result 태그에 출력
 	document.querySelector("#result").textContent =
 			currentFortune;
 			alert(currentFortune);
+	
+	console.log(
+		"행운 뽑기" + "myFortune"+(cnt)+ ": "+ currentFortune
+	);
+	
 }
 // 4. 포춘을 저장하는 함수 정의 saveFortune()
 function saveFortune(){
-	alert("버튼2클릭");
+	// 1. currentFortune값이 있는가 조사
+	// 없으면 실행취소
+	if(currentFortune === ""){
+		alert("먼저 행운을 뽑아주세요!");
+		return;
+	}
+	// 2. localStorage 웹브라우저 저장소에
+	// 영구저장 localStorage.setItem사용
+	localStorage.setItem(
+		"myFortune"+(cnt),
+		currentFortune
+	);
+	alert("행운을 저장했습니다.");
+	console.log(
+		"행운 저장" + "myFortune"+(cnt++) + ": "+ currentFortune
+	);
+	
 }
 // 5. 저장된 포춘을 불러오는 함수 정의 loadFortune()
 function loadFortune(){
-	alert("버튼3클릭");
+	const saved = localStorage.getItem(
+		"myFortune"+(cnt-1)
+	);
+	if(saved === ""){
+		alert("불러올 행운이 없습니다.");
+		return;		
+	}
+	currentFortune = saved;
+	document.querySelector("#result").textContent = saved;	
+	alert("행운을 불러왔습니다.");
+	console.log(
+		"행운 불러오기" + "myFortune"+(cnt-1) + ": "+ currentFortune
+	);
+
 }
 // 6. 저장된 포춘을 삭제하는 함수 정의 deleteFortune()
 function deleteFortune(){
-	alert("버튼4클릭");
+	const deleted = localStorage.getItem(
+		"myFortune" + cnt--
+	);
+	if(deleted === ""){
+		alert("삭제할 행운이 없습니다.")
+		return
+	}
+	localStorage.removeItem("myFortune" + cnt);
+	currentFortune = localStorage.getItem("myFortune" + (cnt-1));
+	document.querySelector("#result").textContent = currentFortune;
+	alert("최근 행운 삭제 완료!");
+	console.log(
+		"행운 삭제" + ("myFortune"+(cnt-1)) + ": "+ currentFortune
+	);
+
 }
 
+function viewFortune(){
+	let view = "";
+	if(cnt === 0){
+		alert("저장된 행운이 없습니다.");
+		return
+	}
+	for(let i = 0; i < cnt; i++){
+		if(i < cnt){
+			view = view + (i + 1) +". " + localStorage.getItem("myFortune" + i) + "\n";
+		}
+		else{
+			view = view + (i + 1) +". " + localStorage.getItem("myFortune" + i);
+		}
+	}	
+	console.log(view);
+	alert("전체 행운 리스트\n" + view);
+}
 
-
+function allDeleteFortune(){
+	const deleted = localStorage.getItem(
+		"myFortune" + --cnt
+	);
+	if(deleted === ""){
+		alert("삭제할 행운이 없습니다.")
+		return
+	}
+	cnt = 0;
+	localStorage.clear();
+	alert("전체 행운 삭제 완료")		
+}
 

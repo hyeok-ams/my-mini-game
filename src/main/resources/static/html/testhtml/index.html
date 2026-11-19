@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	   <link rel = "stylesheet" href = "../minji/css/minjistyle.css"></link>
+
+<title>보물 찾기 게임</title>
+</head>
+<body>
+	<div class="game-card">
+		<h1>보물 찾기 게임</h1>
+		<p>숨겨진 보물을 찾아라</p>
+	</div>
+	<hr>
+	<!-- 블럭박스 -->
+	<div class = "game-card">
+		<h2>클릭 점수 게임</h2>
+		<p>현재 점수: <span id = "score"> 0 </span></p>
+	</div>
+	<!-- 활용예제1 -->
+	<div class = "game-card">
+		<h2>숫자 맞히기</h2>
+		<p><span class = "highLight">1부터 50까지</span>의 숫자를 맞히세요</p>
+	</div>
+	<!-- 활용예제2 -->
+	<p class = "game-card">현재 점수는 <span class = "highLight">20점</span>입니다.</p>
+	
+	<div class = "emphasis-div">
+		<p><strong>주의:</strong>
+			게임을 시작하기 전에 이름을 입력하세요</p>
+		<p>이번 게임은 <em id="emp">시간 안에</em> 정답을 맞히는 게임입니다.</p>
+	</div>	
+	
+	<button onclick ="startGame">시작하기</button>
+	<button id = "resetButton">다시 시작</button>
+	<button id = "checkScore">점수확인</button>
+	
+	<script src="/js/testhtml.js"></script>
+</body>
+</html>
